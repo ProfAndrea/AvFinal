@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdutoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/criar',[ProdutoController::class::'create'])
+Route::get('/criar',[ProdutoController::class,'create']);
+Route::post('/criar',[ProdutoController::class,'store'])->name('cadastrar_produto');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

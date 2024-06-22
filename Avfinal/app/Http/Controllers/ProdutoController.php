@@ -20,15 +20,18 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.criar');
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+
+        { dd($request->nome);
+     //produto::create(['nome'->$request->nome,
+     //'fornecedor'->$request->fornecedor
+     //   ]);
     }
 
     /**
