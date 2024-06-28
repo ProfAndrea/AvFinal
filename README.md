@@ -7,6 +7,12 @@
 php composer.phar install <br>
 php artisan serv e<br>
 
+
+# configurar GIT
+ git config --global user.name "ProfAndrea"
+ git config --global user.email andrea.pellissari@escola.pr.gov.br
+
+
 # Vamos usar a tabela produto como exemplo
 
 # Criar BD 
@@ -57,7 +63,7 @@ Route:: post('layouts/criar', [ProdutoController::class, 'store'])-> name('cadas
 # LEITURA DE UM REGISTRO
 
 # Criar Rota
- Route:: get('layouts/ver/{id}', [ProdutoController::class, 'show']);  <br>
+ Route:: get('/ver/{id}', [ProdutoController::class, 'show']);  <br>
 
 
  #  app\Http\Controllers - ProdutosController.php
@@ -65,12 +71,12 @@ Route:: post('layouts/criar', [ProdutoController::class, 'store'])-> name('cadas
  *funcao show ($id)
 
 $produto= Produto::findOrFail($id); <br>
-return view('layouts.show, ['produto =>$produto]);<br>
+return view('layouts.show', [produto =>$produto]);<br>
 
 
 #BLADE
 
-mostrar.blade.php
+show.blade.php
 label <br>
 input type text name value="{{$produto->nome}}"
 
@@ -79,8 +85,8 @@ input type text name value="{{$produto->nome}}"
 # ATUALIZANDO os dados
 
 #ROTA
-Route:: get('layouts/editar/{id}', [ProdutoController::class, 'edit']);  <br>
-Route:: post('layouts/editar/{id}', [ProdutoController::class, 'update']) ->name(alterar_produto);  <br>
+Route:: get('/editar/{id}', [ProdutoController::class, 'edit']);  <br>
+Route:: post('/editar/{id}', [ProdutoController::class, 'update']) ->name('alterar_produto');  <br>
 
 # Controller
 funcao edit ($id)
@@ -91,7 +97,7 @@ return view('layouts.editar',['produto'=>$produto]);
 
 # BLADE
  editar.blade.php
- form  {{route ('alterar_produto, ['id'=>$produto->id])}}
+ form  {{route ('alterar_produto', ['id'=>$produto->id])}}
 
 
 # Controller
