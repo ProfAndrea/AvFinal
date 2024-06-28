@@ -76,7 +76,7 @@ return view('layouts.show', [produto =>$produto]);<br>
 
 #BLADE
 
-show.blade.php
+show.blade.php <br>
 label <br>
 input type text name value="{{$produto->nome}}"
 
@@ -84,12 +84,12 @@ input type text name value="{{$produto->nome}}"
 
 # ATUALIZANDO os dados
 
-#ROTA
+# ROTA
 Route:: get('/editar/{id}', [ProdutoController::class, 'edit']);  <br>
 Route:: post('/editar/{id}', [ProdutoController::class, 'update']) ->name('alterar_produto');  <br>
 
 # Controller
-funcao edit ($id)
+funcao edit ($id) <br>
 $produto= Produto::findOrFail($id); <br>
 
 return view('layouts.editar',['produto'=>$produto]);
