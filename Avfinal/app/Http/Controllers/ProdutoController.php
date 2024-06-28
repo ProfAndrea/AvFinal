@@ -29,17 +29,18 @@ class ProdutoController extends Controller
     public function store(Request $request)
 
         { dd($request->nome);
-     //produto::create(['nome'->$request->nome,
-     //'fornecedor'->$request->fornecedor
-     //   ]);
+     produto::create(['nome'=>$request->nome,
+     'fornecedor'=>$request->fornecedor
+        ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(produto $produto)
+    public function show($id)
     {
-        //
+        $produto= Produto::findOrFail($id);
+return view('layouts.show', ['produto'=>$produto]);
     }
 
     /**
