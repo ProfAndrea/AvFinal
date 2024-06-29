@@ -101,11 +101,11 @@ return view('layouts.editar',['produto'=>$produto]);
 
 
 # Controller
-funcao update ($request, $id)
+funcao update (Request $request, $id)
 
 $produto= Produto::findOrFail($id); <br>
 
-Produto::update([
+$produto::update([
 'nome'-> $ request->nome,
 ...]);
 
@@ -124,6 +124,11 @@ Route:: post('layouts/excluir/{id}', [ProdutoController::class, 'destroy'])->nam
 funcao delete($id)
 $produto= Produto::findOrFail($id); <br>
 return view('layouts.deletar',['produto'=>$produto]);
+
+funcao destroy($id)
+$produto= Produto::findOrFail($id); <br>
+$produto->delete();
+return 'produto deletado';
 
 
 # BLADE
